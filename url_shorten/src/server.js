@@ -1,20 +1,27 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const connectDB = require('./config/database');
-const urlRoutes = require('./routes/urlRoutes');
+const express = require("express");
+const bodyParser = require("body-parser");
+const connectDB = require("./config/database");
+const urlRoutes = require("./routes/urlRoutes");
+const path = require("path");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 4000;
 
-// Connect to MongoDB
+// ✅ Connect to MongoDB
 connectDB();
 
-// Middleware
-app.use(bodyParser.json());
+// ✅ Set EJS as the view engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-// Routes
-app.use('/', urlRoutes);
+// ✅ Middleware
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true })); // Ensure form data parsing
+//app.use(express.static(path.join(__dirname, "public"))); // Serve static files
+
+// ✅ Routes
+app.use("/", urlRoutes);
 
 app.listen(port, () => {
-  console.log(`URL Shortener service running at http://localhost:${port}`);
+  console.log(`✅ URL Shortener service running at http://localhost:${port}`);
 });

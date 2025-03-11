@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>URL Shortener Data</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>URL ID</th>
+                <th>Original URL</th>
+                <th>Short URL</th>
+                <th>Clicks</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% urls.forEach(url=> { %>
+                <tr>
+                    <td>
+                        <%= url.urlId %>
+                    </td>
+                    <td><a href="<%= url.originalUrl %>" target="_blank">
+                            <%= url.originalUrl %>
+                        </a></td>
+                    <td><a href="<%= url.shortUrl %>" target="_blank">
+                            <%= url.shortUrl %>
+                        </a></td>
+                    <td>
+                        <%= url.clicks %>
+                    </td>
+                    <td>
+                        <%= new Date(url.createdAt).toLocaleString() %>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</body>
+
+</html>

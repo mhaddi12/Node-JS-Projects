@@ -7,11 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "nanoid": "^3.3.7",
     "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.10",
+    "express": "^4.18.2",
     "mongoose": "^8.0.3",
-    "dotenv": "^16.3.1"
+    "nanoid": "^3.3.7"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
